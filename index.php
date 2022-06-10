@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
@@ -31,14 +31,10 @@
             </div>
             
             <!-- 로그인/회원가입 -->
-            <div class="login-box">
-                <form action="">
-                    <label for="">ID : <input type="text"></label>
-                    <label for="">PW : <input type="password"></label>
-                </form>  
-            </div>
+            <div class="login-box" style="color:white;">
+                <?php include_once('admin/user/login_signUp.php') ?>                    
+            </div>      
         </div>
-        
     </div>
 </body>
 </html>
