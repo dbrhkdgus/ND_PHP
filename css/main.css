@@ -1,0 +1,64 @@
+body{
+    background-color: #2f323a;
+    background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) ),url(../img/logo.jpeg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+h2{
+    color: white;
+}
+div{
+    border : 3px white solid;
+}
+
+.wrap{
+    display: flex;
+    flex-direction: row;
+    margin-top: 5vh;
+    height: 90vh;
+}
+
+.title-seats-box{
+    width: 45%;
+    height: auto;
+    margin-left: 5%;
+}
+
+.title-box{
+    height: 10%;
+    color: aqua;
+}
+
+.seats-box{
+    height: 90%;
+}
+
+.food-and-login-wrap{
+    width: 45%;
+    height: auto;
+    margin-right: 5%;
+    display: flex;
+    flex-direction: column;
+}
+
+.food-box{
+    height: 80%;
+} 
+.login-box{
+    height: 20%;
+}
+
+.food-item-box{
+    display: flex;
+    flex-direction: row;
+}
+
+.food-item > img{
+    width: 100%;
+    height: 50px;
+}
+.food-item > p{
+    margin: 0px;
+    color: white;
+}
