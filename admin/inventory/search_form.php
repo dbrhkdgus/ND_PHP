@@ -23,13 +23,10 @@
 
 
 <div class="inventory_search_from">
-    <form>
+    <form action="search.php" method="get">
         <div class="inner-form">
             <div class="input-field select-wrap">
-                <div class="icon-wrap">
-
-                </div>
-                <select name="choices-single-defaul" data-trigger>
+                <select name="cte_id" data-trigger>
                     <option placeholder="">카테고리</option>
                     <option>3 Adults</option>
                     <option>4 Adults</option>
@@ -37,24 +34,18 @@
                 </select>
             </div>
             <div class="input-field select-wrap">
-                <div class="icon-wrap">
-
-                </div>
-                <select name="choices-single-defaul" data-trigger>
-                    <option placeholder="">제품명</option>
-                    <option>3 Adults</option>
-                    <option>4 Adults</option>
-                    <option>5 Adults</option>
+                <select name="type" data-trigger>
+                    <option value="name" selected>제품명</option>
+                    <option value="">3 Adults</option>
+                    <option value="">4 Adults</option>
+                    <option value="">5 Adults</option>
                 </select>
             </div>
             <div class="input-field input-wrap">
-                <div class="icon-wrap">
-
-                </div>
-                <input class="datepicker" id="return" type="text" placeholder="30 Aug 2018">
+                <input type="text" name="keyword" placeholder="검색어를 입력하세요">
             </div>
             <div class="input-field fifth-wrap">
-                <button class="btn-search" type="button">SEARCH</button>
+                <button class="btn-search" type="submit">SEARCH</button>
             </div>
         </div>
     </form>
