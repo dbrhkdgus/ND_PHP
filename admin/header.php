@@ -1,5 +1,5 @@
 <?php
-  define('PATH', 'http://localhost/ND_PHP/admin/')
+  define('PATH', 'http://localhost/ND_PHP/admin/');
 ?>
 <!DOCTYPE html>
 <html lang="en">
