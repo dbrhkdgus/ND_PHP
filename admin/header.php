@@ -1,5 +1,5 @@
 <?php
-  include_once('../config.php');
+  define('PATH', 'http://localhost/ND_PHP/admin/')
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,15 +11,15 @@
   <title>Dashio - Bootstrap Admin Template</title>
 
   <!-- Favicons -->
-  <link href="<?= PATH ?>/img/favicon.png" rel="icon">
+  <link href="<?= PATH ?>img/favicon.png" rel="icon">
   <link href="<?= PATH ?>img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Bootstrap core CSS -->
   <link href="<?= PATH ?>lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!--external css-->
   <link href="<?= PATH ?>lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
-  <link rel="<?= PATH ?>stylesheet" type="text/css" href="css/zabuto_calendar.css">
-  <link rel="<?= PATH ?>stylesheet" type="text/css" href="lib/gritter/css/jquery.gritter.css" />
+  <link rel="stylesheet" type="text/css" href="<?= PATH ?>css/zabuto_calendar.css">
+  <link rel="stylesheet" type="text/css" href="<?= PATH ?>lib/gritter/css/jquery.gritter.css" />
   <!-- Custom styles for this template -->
   <link href="<?= PATH ?>css/style.css" rel="stylesheet">
   <link href="<?= PATH ?>css/style-responsive.css" rel="stylesheet">
@@ -131,7 +131,7 @@
               </li>
               <li>
                 <a href="index.html#">
-                  <span class="photo"><img alt="avatar" src="img/ui-zac.jpg"></span>
+                  <span class="photo"><img alt="avatar" src="<?= PATH ?>img/ui-zac.jpg"></span>
                   <span class="subject">
                   <span class="from">Zac Snider</span>
                   <span class="time">Just now</span>
@@ -143,7 +143,7 @@
               </li>
               <li>
                 <a href="index.html#">
-                  <span class="photo"><img alt="avatar" src="img/ui-divya.jpg"></span>
+                  <span class="photo"><img alt="avatar" src="<?= PATH ?>img/ui-divya.jpg"></span>
                   <span class="subject">
                   <span class="from">Divya Manian</span>
                   <span class="time">40 mins.</span>
@@ -155,7 +155,7 @@
               </li>
               <li>
                 <a href="index.html#">
-                  <span class="photo"><img alt="avatar" src="img/ui-danro.jpg"></span>
+                  <span class="photo"><img alt="avatar" src="<?= PATH ?>img/ui-danro.jpg"></span>
                   <span class="subject">
                   <span class="from">Dan Rogers</span>
                   <span class="time">2 hrs.</span>
@@ -167,7 +167,7 @@
               </li>
               <li>
                 <a href="index.html#">
-                  <span class="photo"><img alt="avatar" src="img/ui-sherman.jpg"></span>
+                  <span class="photo"><img alt="avatar" src="<?= PATH ?>img/ui-sherman.jpg"></span>
                   <span class="subject">
                   <span class="from">Dj Sherman</span>
                   <span class="time">4 hrs.</span>
@@ -246,7 +246,7 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="profile.html"><img src="img/ui-sam.jpg" class="img-circle" width="80"></a></p>
+          <p class="centered"><a href="profile.html"><img src="<?= PATH ?>img/ui-sam.jpg" class="img-circle" width="80"></a></p>
           <h5 class="centered">Sam Soffes</h5>
           <li class="mt">
             <a class="active" href="index.html">

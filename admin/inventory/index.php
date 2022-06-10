@@ -1,5 +1,5 @@
-<?php require_once('./header.php') ?>
+<?php require_once('../header.php') ?>
 
 test
 
-<?php include_once('./footer.php') ?>
+<?php include_once('../footer.php') ?>
