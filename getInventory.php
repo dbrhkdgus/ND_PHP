@@ -1,7 +1,7 @@
 <?php 
     require_once('./DataBase/connection.php');
     function getItemByCategoryId($id){
-        $sql = 'select * from v_dashboard_food where category_id ='.$id;
+        $sql = 'select * from v_inventory_info where category_id ='.$id;
         
         return connect($sql);
     }
