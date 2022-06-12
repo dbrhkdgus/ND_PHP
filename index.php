@@ -23,8 +23,8 @@
             
             <!-- 좌석 정보 패널 -->
             <div class="seats-box">
-
-
+                <!--  저장된 좌석 불러오기 -->
+                <?php include_once('seat/getSeat.php') ?>
             </div>
         </div>
 
