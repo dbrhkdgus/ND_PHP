@@ -1,5 +1,4 @@
 <?php
-    include('../../DataBase/connection.php');
     
     function allItems(){
         $sql = 'select * from v_inventory_info';

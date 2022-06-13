@@ -26,7 +26,7 @@
                           <th> 발주처 </th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody class="result">
                           <?php include('getInventoryList.php'); allItems();?>
                         
                       </tbody>
@@ -37,5 +37,31 @@
       </section>
 </section>
 
+<script>
+  function search(e){
+    var form = $(e).parents('form');
+    var formData = new FormData(form[0]);
+    var obj = {};
+    for(const [k, v] of formData){
+      obj[k] = v;
+    };
+
+    const jsonStr = JSON.stringify(obj);
+
+    $.ajax({
+      url : "search.php",
+      method : 'get',
+      data : {
+        data : jsonStr
+      },
+      success(res){
+        $(".result").html('').append(res);
+      },
+      error : console.log
+
+    })
+  }
+
+</script>
 
 <?php include_once('../footer.php') ?>

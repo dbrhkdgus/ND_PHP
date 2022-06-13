@@ -290,7 +290,7 @@
               <span>재고 관리</span>
               </a>
             <ul class="sub">
-              <li><a href="./inventory">Form Components</a></li>
+              <li><a href="./inventory">재고 목록</a></li>
               <li><a href="advanced_form_components.html">Advanced Components</a></li>
               <li><a href="form_validation.html">Form Validation</a></li>
               <li><a href="contactform.html">Contact Form</a></li>
