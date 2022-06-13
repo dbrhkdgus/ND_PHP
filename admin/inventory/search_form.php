@@ -23,14 +23,12 @@
 
 
 <div class="inventory_search_from">
-    <form action="search.php" method="get">
+    <form onsubmit="return false" method="get" >
         <div class="inner-form">
             <div class="input-field select-wrap">
                 <select name="cte_id" data-trigger>
-                    <option placeholder="">카테고리</option>
-                    <option>3 Adults</option>
-                    <option>4 Adults</option>
-                    <option>5 Adults</option>
+                    <option value="" selected>카테고리</option>
+                    <?php include_once('getCategory.php'); echo getCteOptionTag();?>
                 </select>
             </div>
             <div class="input-field select-wrap">
@@ -42,10 +40,10 @@
                 </select>
             </div>
             <div class="input-field input-wrap">
-                <input type="text" name="keyword" placeholder="검색어를 입력하세요">
+                <input type="text"  name="keyword" placeholder="검색어를 입력하세요">
             </div>
             <div class="input-field fifth-wrap">
-                <button class="btn-search" type="submit">SEARCH</button>
+                <button class="btn-search" type="button" onClick="search(this);">SEARCH</button>
             </div>
         </div>
     </form>

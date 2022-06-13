@@ -1,8 +1,6 @@
 <?php
-    include('../../DataBase/connection.php');
-    
     function allItems(){
-        $sql = 'select * from v_inventory_info';
+        $sql = 'select * from v_inventory_info order by category_id';
         $result = connect($sql);
         $tag = '';
         while($item = mysqli_fetch_array($result)){
@@ -11,6 +9,7 @@
             <td class="py-1">
               <img class="summary_img" src="'.$item["img_url"].'" alt="image" /> </td>
             <td> '.$item["name"].' </td>
+            <td> '.$item["category_name"].' </td>
             <td> '.$item["price"].'원 </td>
             <td>
               <div class="progress">
@@ -18,6 +17,7 @@
               </div>
             </td>
             <td> '.$item["order_name"].' </td>
+            <td><button onClick = "itemDetail('.$item["id"].')">상세 보기</button> </td>
           </tr>';
         }
 
