@@ -108,7 +108,7 @@
       <div class="modal" id="item_detail_modal">
         <div class="modal_body">제품 상세 정보
           <div class="close_modal" onClick="close_modal(this);">x</div>
-      
+            
         </div>
       </div>
       </section>
@@ -152,7 +152,6 @@ function itemDetail(id){
       id : id
     },
     success(res){
-      console.log(res);
       $(".modal_body").html('제품 상세 정보<div class="close_modal" onClick="close_modal(this);">x</div>').append(res);
       $('.modal').show();
     },
@@ -164,9 +163,38 @@ function close_modal(e){
   var modal = $(e).parents('.modal');
   modal.hide();
 }
-
+function is_changed(){
+  $("input[name=isChanged]").val(true);
+  $("#btn_item_detail_submit").text('수정');
+}
 function inventory_process(mode, id){
-  console.log(mode, id);
+  var flag = $.parseJSON($('input[name=isChanged').val());
+  if(flag){
+     var form = $(document["inventory_detail"])
+     var formData = new FormData(form[0]);
+     var obj = {};
+     for(const [k, v] of formData){
+       obj[k] = v;
+     };
+     const jsonStr = JSON.stringify(obj);
+     $.ajax({
+       url : 'inventory_process.php',
+       method : 'post',
+       data : {
+         jsonStr : jsonStr,
+         mode : mode,
+         id : id
+       },
+       success(res){
+         console.log(res);
+         alert('제품 정보가 수정되었습니다.')
+       },
+       error : console.log
+     })
+  }else{
+    $('#item_detail_modal').hide();
+  }
+
 }
 
 </script>
