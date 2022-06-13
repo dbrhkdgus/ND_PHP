@@ -5,19 +5,19 @@
 
     $tag = '<form name="inventory_detail" onSubmit="return false"><input type="hidden" name="isChanged" value="false">';
     $id = $_GET["id"];
-    $order = getOrderInfo($id);
     
     $sql = 'select * from v_inventory_info where id ='.$id;
     
     $result = connect($sql);
-
+    
     while($item = mysqli_fetch_array($result)){
+        $order = getOrderInfo($item["order_id"]);
         $tag = $tag.'<!-- 카테고리 -->
         <hr style="margin-bottom : 0px;">
         <div class="category_info">
           <label for="cte_select"> 카테고리 : 
             <select name="cte_id" id="cte_select" onChange="is_changed();">
-              '.getCteOptionTag($id).'
+              '.getCteOptionTag($item["category_id"]).'
             </select>
           </label>
         </div>
