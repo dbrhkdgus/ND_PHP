@@ -23,7 +23,7 @@
 
 
 <div class="inventory_search_from">
-    <form action="search.php" method="get">
+    <form onsubmit="return false" method="get" >
         <div class="inner-form">
             <div class="input-field select-wrap">
                 <select name="cte_id" data-trigger>
