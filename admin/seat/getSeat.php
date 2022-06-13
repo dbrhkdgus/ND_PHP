@@ -14,11 +14,25 @@
     .seat {
         margin : 10px;
         display : inline-block;
-        width : 60px;
-        height : 60px;
+        width : 50px;
+        height : 50px;
+    }
+    .none {
+        border : none;
+        display : hidden;
+    }
+    .empty, .occupy {
         border : 1px solid black;
         border-radius : 3px;
-        background : white;
+    }
+    .empty {
+        background : gray;
+    }
+    .empty:hover {
+        background : black;
+    }
+    .occupy {
+        background : red;
     }
 </style>
 
@@ -38,7 +52,11 @@
     $str = "<div class='seats-box-body'><div class='seats-box-content'>";
     for($i = 0; $i < count($seat_loc); $i++) {
         for($j = 0; $j < count($seat_loc[$i+1]); $j++) {
-            $str .= "<div class='seat' data-x='".$seat_loc[$i+1][$j]."' data-y='".($i+1)."'></div>";
+            switch($seat_loc[$i+1][$j]) {
+                case 0 : $str .= "<div class='seat none' data-x='".$seat_loc[$i+1][$j]."' data-y='".($i+1)."'></div>"; break;
+                case 1 : $str .= "<div class='seat empty' data-x='".$seat_loc[$i+1][$j]."' data-y='".($i+1)."'></div>"; break;
+                case 2 : $str .= "<div class='seat occupy' data-x='".$seat_loc[$i+1][$j]."' data-y='".($i+1)."'></div>"; break;
+            }
         }
         $str .= "<br><br>";
     }
