@@ -28,7 +28,7 @@
             <div class="input-field select-wrap">
                 <select name="cte_id" data-trigger>
                     <option value="" selected>카테고리</option>
-                    <?php include_once('getCategory.php') ?>
+                    <?php include_once('getCategory.php'); echo getCteOptionTag();?>
                 </select>
             </div>
             <div class="input-field select-wrap">

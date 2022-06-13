@@ -1,5 +1,4 @@
 <?php
-    
     function allItems(){
         $sql = 'select * from v_inventory_info order by category_id';
         $result = connect($sql);
@@ -18,6 +17,7 @@
               </div>
             </td>
             <td> '.$item["order_name"].' </td>
+            <td><button onClick = "itemDetail('.$item["id"].')">상세 보기</button> </td>
           </tr>';
         }
 

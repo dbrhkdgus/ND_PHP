@@ -30,6 +30,7 @@
             </div>
             </td>
             <td> '.$item["order_name"].' </td>
+            <td><button onClick = "itemDetail('.$item["id"].')">상세 보기</button> </td>
             </tr>';
     }
 
