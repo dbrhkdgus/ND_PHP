@@ -302,7 +302,7 @@
               <span>좌석 관리</span>
               </a>
             <ul class="sub">
-              <li><a href="basic_table.html">Basic Table</a></li>
+              <li><a href="<?= PATH ?>/seat">좌석 현황</a></li>
               <li><a href="responsive_table.html">Responsive Table</a></li>
               <li><a href="advanced_table.html">Advanced Table</a></li>
             </ul>
