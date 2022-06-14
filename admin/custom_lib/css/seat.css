@@ -1,0 +1,46 @@
+.seats-box-content {
+    width : 100%;
+    height : 100%;
+    border : 1px solid black;
+    border-radius : 3px;
+    background : white;
+    text-align : center;
+}  
+
+.seats-box-body {
+    display : inline-block;
+    text-align : center;
+}
+
+.seat {
+    margin : 10px;
+    display : inline-block;
+    width : 40px;
+    height : 40px;
+}
+
+.none {
+    border : none;
+    display : hidden;
+}
+
+.empty, .selected, .occupy {
+    border : 1px solid black;
+    border-radius : 3px;
+}
+
+.empty {
+    background : white;
+}
+
+.empty:hover {
+    background : gray;
+}
+
+.selected {
+    background : blue;
+}
+
+.occupy {
+    background : black;
+}
