@@ -19,8 +19,8 @@
             
             <!-- 좌석 정보 패널 -->
             <div class="seats-box">
-
-
+                <!--  저장된 좌석 불러오기 -->
+                <?php include_once('./admin/seat/seat_main.php') ?>
             </div>
         </div>
 
