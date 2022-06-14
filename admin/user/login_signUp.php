@@ -1,5 +1,5 @@
 <?php
-    require_once('./DataBase/connection.php');
+    require_once($_SERVER["DOCUMENT_ROOT"].'\ND_PHP\DataBase\connection.php');
     $conn = mysqli_connect('192.168.0.65', 'php', 'php', 'php_project');
     function login(){
 

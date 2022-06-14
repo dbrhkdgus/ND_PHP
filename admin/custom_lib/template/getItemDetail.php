@@ -1,23 +1,23 @@
 <?php
-    require_once('../../DataBase/connection.php');
-    include('getCategory.php');
-    include('getOrderInfo.php');
+    require_once($_SERVER["DOCUMENT_ROOT"].'\ND_PHP\DataBase\connection.php');
+    include('./getCategory.php');
+    include('./getOrderInfo.php');
 
-    $tag = '';
+    $tag = '<form name="inventory_detail" onSubmit="return false"><input type="hidden" name="isChanged" value="false">';
     $id = $_GET["id"];
-    $order = getOrderInfo($id);
     
     $sql = 'select * from v_inventory_info where id ='.$id;
     
     $result = connect($sql);
-
+    
     while($item = mysqli_fetch_array($result)){
+        $order = getOrderInfo($item["order_id"]);
         $tag = $tag.'<!-- 카테고리 -->
         <hr style="margin-bottom : 0px;">
         <div class="category_info">
           <label for="cte_select"> 카테고리 : 
-            <select name="cte_id" id="cte_select">
-              '.getCteOptionTag().'
+            <select name="cte_id" id="cte_select" onChange="is_changed();">
+              '.getCteOptionTag($item["category_id"]).'
             </select>
           </label>
         </div>
@@ -35,56 +35,56 @@
             <table style="width: 120%;">
               <tr>
                 <th> 이름 </th>
-                <td><input type="text" name="name" value="'.$item["name"].'"></td>
+                <td><input type="text" name="name" value="'.$item["name"].'" onChange="is_changed();"></td>
               </tr>
               <tr>
                 <th> 가격 </th>
-                <td><input type="number" name="price" value="'.$item["price"].'">원</td>
+                <td><input type="number" name="price" value="'.$item["price"].'" onChange="is_changed();">원</td>
               </tr>
               <tr>
                 <th> 재고량 </th>
-                <td><input type="number" name="amount" value="'.$item["amount"].'">개</td>
+                <td><input type="number" name="amount" value="'.$item["amount"].'" onChange="is_changed();">개</td>
               </tr>
               <tr>
                 <th> 최소 재고량 </th>
-                <td><input type="number" name="maint_amt" value="'.$item["maint_amt"].'">개</td>
+                <td><input type="number" name="maint_amt" value="'.$item["maint_amt"].'" onChange="is_changed();">개</td>
               </tr>
               <tr>
                 <th> 최대 재고량 </th>
-                <td><input type="number" name="max_amt" value="'.$item["max_amt"].'">개</td>
+                <td><input type="number" name="max_amt" value="'.$item["max_amt"].'" onChange="is_changed();">개</td>
               </tr>
               <tr>
                 <th> 인기/신제품 </th>
                 <td>
-                  <input style="width: 10%;" type="checkbox" name="is_new"';
+                  <input style="width: 10%;" type="checkbox" name="is_new" value="1"';
         if($item["is_new"]){
             $tag = $tag.' checked';
         }
 
-        $tag = $tag.'> 신제품
-                  <input style="width: 10%;" type="checkbox" name="is_pop"';
+        $tag = $tag.' onChange="is_changed();"> 신제품
+                  <input style="width: 10%;" type="checkbox" name="is_pop" value="1"';
         if($item["is_pop"]){
             $tag = $tag.' checked';
         }          
         
-        $tag = $tag.'> 인기
+        $tag = $tag.' onChange="is_changed();"> 인기
                 </td>
               </tr>
               <tr>
                 <th> 자동 발주 </th>
                 <td>
                   <p style="font-size : 10px; margin-bottom:0px; margin-top: 2px;">최소 재고 도달 시 자동 발주</p>
-                  <input style="width: 10%;" type="checkbox"';
+                  <input style="width: 10%;" name="auto_email" type="checkbox" value="1"';
         if($item["auto_email"]){
             $tag = $tag.' checked';
         }
         
-        $tag = $tag.'> 자동발주
+        $tag = $tag.' onChange="is_changed();"> 자동발주
                 </td>
               </tr>
             </table>
           </div>
-        </div>
+        </div></form>
         <!-- 아이템 기본 정보 끝 -->
         <hr>
         <!-- 발주 관리 -->
@@ -94,7 +94,7 @@
             <tbody>
               <tr>
                 <th>발주처 명</th>
-                <td> '.$order["name"].' </td>
+                <td> '.$item["order_name"].' </td>
               </tr>
               <tr>
                 <th> 발주처 연락처 </th>
@@ -106,14 +106,14 @@
               </tr>
               <tr>
                 <th> 메모 </th>
-                <td><textarea name="" id="" cols="25" rows="5" style="resize:none;">'.$order["memo"].'</textarea></td>
+                <td><textarea name="" id="" cols="25" rows="5" style="resize:none;" readonly>'.$order["memo"].'</textarea></td>
               </tr>
             </tbody>
           </table>
         </div>
         <hr style="margin-bottom: 10px;">
         <div class="submit_button">
-          <button onClick="inventory_process("update", '.$item["id"].')">수정</button>
+          <button id="btn_item_detail_submit" onClick="inventory_process(\'update\', '.$item["id"].')">닫기</button>
         </div>';
     }
     echo $tag;
