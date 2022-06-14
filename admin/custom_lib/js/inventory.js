@@ -30,10 +30,11 @@ function search(e){
   }
 function itemDetail(id){
   $.ajax({
-    url : PATH + 'custom_lib/template/getItemDetail.php',
+    url : PATH + 'custom_lib/template/getModalDetail.php',
     method : 'get',
     data : {
-      id : id
+      id : id,
+      mode : 'item'
     },
     success(res){
       $(".modal_body").html('제품 상세 정보<div class="close_modal" onClick="close_modal(this);">x</div>').append(res);
@@ -43,14 +44,6 @@ function itemDetail(id){
   })
 }
 
-function close_modal(e){
-  var modal = $(e).parents('.modal');
-  modal.hide();
-}
-function is_changed(){
-  $("input[name=isChanged]").val(true);
-  $("#btn_item_detail_submit").text('수정');
-}
 function inventory_process(mode, id){
   var flag = $.parseJSON($('input[name=isChanged').val());
   if(flag){
@@ -78,5 +71,13 @@ function inventory_process(mode, id){
   }else{
     $('#item_detail_modal').hide();
   }
+
+}
+
+function is_changed(){
+  $("input[name=isChanged]").val(true);
+  
+  $("#btn_item_detail_submit").text('수정');
+  
 
 }

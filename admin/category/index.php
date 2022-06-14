@@ -1,4 +1,5 @@
 <?php require_once('../header.php') ?>
+<link rel="stylesheet" href="../custom_lib/css/modal.css">
 <section id="main-content">
     <section class="wrapper">
     <?php include('../custom_lib/template/search_form.php') ?>
@@ -16,7 +17,7 @@
                     </tr>
                 </thead>
                 <tbody class="result">
-                    <?php echo getCteOptionTag(); ?>
+                    <?php echo getCteListTag(); ?>
                 </tbody>
                 </table>
             </div>
@@ -24,6 +25,7 @@
         </div>
     </section>
 </section>
-    
+<script src="../custom_lib/js/common.js"></script>
+<script src="../custom_lib/js/category.js"></script>
 
 <?php require_once('../footer.php') ?>
