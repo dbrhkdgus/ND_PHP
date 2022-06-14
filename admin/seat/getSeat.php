@@ -21,18 +21,21 @@
         border : none;
         display : hidden;
     }
-    .empty, .occupy {
+    .empty, .selected, .occupy {
         border : 1px solid black;
         border-radius : 3px;
     }
     .empty {
-        background : gray;
+        background : white;
     }
     .empty:hover {
-        background : black;
+        background : gray;
+    }
+    .selected {
+        background : blue;
     }
     .occupy {
-        background : red;
+        background : black;
     }
 </style> 
 <?php
@@ -54,13 +57,13 @@
         for($j = 0; $j < count($seat_loc[$i+1]); $j++) {
             switch($seat_loc[$i+1][$j]) {
                 case 0 : 
-                    $str .= "<div class='seat none' data-x='".$j."' data-y='".($i+1)."'><input type='hidden' name='mode' value='none'></div>"; 
+                    $str .= "<div class='seat none' data-x='".$j."' data-y='".($i+1)."'></div>"; 
                     break;
                 case 1 : 
-                    $str .= "<div class='seat empty' onclick='selectSeat(".$j.",".($i+1).");' data-x='".$j."' data-y='".($i+1)."'><input type='hidden' name='mode' value='empty'></div>"; 
+                    $str .= "<div class='seat empty' onclick='selectSeat(".$j.",".($i+1).");' data-x='".$j."' data-y='".($i+1)."'></div>"; 
                     break;
                 case 2 : 
-                    $str .= "<div class='seat occupy' onclick='cancelSeat(".$j.",".($i+1).");' data-x='".$j."' data-y='".($i+1)."'><input type='hidden' name='mode' value='occupy'></div>"; 
+                    $str .= "<div class='seat occupy' data-x='".$j."' data-y='".($i+1)."'></div>"; 
                     break;
             }
         }
@@ -77,18 +80,33 @@
 
 <script>
     function selectSeat(x, y) {
-        console.log("selectSeat=====");
-        $target = $("div[data-x=" + x +"][data-y=" + y + "]");
-        $target.removeClass("empty");
-        $target.addClass("occupy");
+        // selected 클래스 조회
+        const classNames = [];
+        $.each($(".selected"), function() {
+            classNames.push($(this).val());
+        });
+        
+        // selected 클래스 및 cancelSeat 이벤트 부여
+        if(classNames.length == 0) {
+            $target = $("div[data-x=" + x +"][data-y=" + y + "]");
+            $target.removeClass("empty");
+            $target.addClass("selected");
+            $target.removeAttr("onclick");
+            $target.attr("onclick", "cancelSeat(" + x + "," + y + ")");
+        }
+        else {
+            alert("하나의 좌석만 선택 가능합니다.");
+        }
+
         console.log($target);
     }
 
     function cancelSeat(x, y) {
-        console.log("cancelSeat=====");
+        // empty 클래스 및 selectSeat 이벤트 부여
         $target = $("div[data-x=" + x +"][data-y=" + y + "]");
-        $target.removeClass("occupy");
+        $target.removeClass("selected");
         $target.addClass("empty");
-        console.log($target);
+        $target.removeAttr("onclick");
+        $target.attr("onclick", "selectSeat(" + x + "," + y + ")");
     }
 </script>
