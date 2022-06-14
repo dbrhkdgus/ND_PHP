@@ -119,6 +119,37 @@
           </div>';
         }
       echo $tag;
+
+
+    }else if($mode === 'order_info'){
+      $id = $_GET["id"];
+      $order = getOrderInfo($id);
+      $tel_arr = explode('-',$order["tel"]);
+
+      $tag = '<hr>
+            <div class="order_info_form_box">
+                <form name="order_info_form" onSubmit="return false">
+                    <input type="hidden" name="isChanged" value="false">
+                    <label for="">
+                        <p>발주처 : </p><input type="text" name="name" value="'.$order["name"].'" onChange="is_change();">
+                    </label>
+                    <label for="">
+                        <p>Email : </p><input type="email" name="email" value="'.$order["email"].'" onChange="is_change();">
+                    </label>
+                    <label for="">
+                        <p>전화번호 : </p><input class="tel_input valid" type="text" name="tel1" value="'.$tel_arr[0].'" onChange="is_change();"> - <input class="tel_input valid" type="text" name="tel2" value="'.$tel_arr[1].'" onChange="is_change();"> - <input class="tel_input valid" type="text" name="tel3" value="'.$tel_arr[2].'" onChange="is_change();">
+                    </label>
+                    <label for="">
+                        <p>메모 : </p> <textarea name="memo" cols="30" rows="10" onChange="is_change();">'.$order["memo"].'</textarea>
+                    </label>
+                    
+                </form>
+            </div>
+            <hr>
+            <div class="order_btn_box">
+                <button id="btn_update_order_info" onClick="order_info_process(\'update\','.$id.');">닫기</button>
+            </div>';
+      echo $tag;   
     }
 
 ?>

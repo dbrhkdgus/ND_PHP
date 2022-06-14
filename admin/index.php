@@ -10,7 +10,7 @@
           <div class="col-lg-12 main-chart">
             <!--CUSTOM CHART -->
               <?php include_once('user_visits_chart.php') ?>
-            <div class="row mt">
+            <div class="row mt" style="margin-bottom: 9%;">
               <!-- SERVER STATUS PANELS -->
               <?php include_once('server_status.php') ?>
               
