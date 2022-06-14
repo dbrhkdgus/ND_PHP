@@ -1,8 +1,8 @@
 <?php require_once('../header.php') ?>
 <link rel="stylesheet" href="../custom_lib/css/modal.css">
 <style>
-    #last_tr{text-align: center;}
-    #last_tr > button {width:90%; margin-top: 5%;}
+    #last_td{text-align: center;}
+    #last_td > button {width:90%; margin-top: 5%;}
     .add_cte_form_box {
         width: 100%;
         text-align: left;

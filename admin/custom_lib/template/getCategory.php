@@ -33,7 +33,7 @@
             </tr>';
 
         }
-        $tag = $tag.'<tr><td id="last_tr" colspan="4"><button onClick="addCte();">카테고리 추가</button></td></tr>';
+        $tag = $tag.'<tr><td id="last_td" colspan="4"><button onClick="addCte();">카테고리 추가</button></td></tr>';
         return $tag;
     }
 ?>

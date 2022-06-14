@@ -292,8 +292,8 @@
             <ul class="sub">
               <li><a href="<?= PATH ?>/inventory">재고 목록</a></li>
               <li><a href="<?= PATH ?>/category">카테고리 관리</a></li>
-              <li><a href="form_validation.html">Form Validation</a></li>
               <li><a href="contactform.html">Contact Form</a></li>
+              <li><a href="<?= PATH ?>/order">발주처 관리</a></li>
             </ul>
           </li>
           <li class="sub-menu">
