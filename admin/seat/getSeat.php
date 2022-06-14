@@ -14,8 +14,8 @@
     .seat {
         margin : 10px;
         display : inline-block;
-        width : 50px;
-        height : 50px;
+        width : 40px;
+        height : 40px;
     }
     .none {
         border : none;
@@ -34,11 +34,11 @@
     .occupy {
         background : red;
     }
-</style>
-
+</style> 
 <?php
     // DB 연결
     require_once('./DataBase/connection.php');
+    // require_once('../../DataBase/connection.php');
     $sql = "SELECT * FROM seat";
     $result = connect($sql);
 
@@ -53,9 +53,15 @@
     for($i = 0; $i < count($seat_loc); $i++) {
         for($j = 0; $j < count($seat_loc[$i+1]); $j++) {
             switch($seat_loc[$i+1][$j]) {
-                case 0 : $str .= "<div class='seat none' data-x='".$seat_loc[$i+1][$j]."' data-y='".($i+1)."'></div>"; break;
-                case 1 : $str .= "<div class='seat empty' data-x='".$seat_loc[$i+1][$j]."' data-y='".($i+1)."'></div>"; break;
-                case 2 : $str .= "<div class='seat occupy' data-x='".$seat_loc[$i+1][$j]."' data-y='".($i+1)."'></div>"; break;
+                case 0 : 
+                    $str .= "<div class='seat none' data-x='".$j."' data-y='".($i+1)."'><input type='hidden' name='mode' value='none'></div>"; 
+                    break;
+                case 1 : 
+                    $str .= "<div class='seat empty' onclick='selectSeat(".$j.",".($i+1).");' data-x='".$j."' data-y='".($i+1)."'><input type='hidden' name='mode' value='empty'></div>"; 
+                    break;
+                case 2 : 
+                    $str .= "<div class='seat occupy' onclick='cancelSeat(".$j.",".($i+1).");' data-x='".$j."' data-y='".($i+1)."'><input type='hidden' name='mode' value='occupy'></div>"; 
+                    break;
             }
         }
         $str .= "<br><br>";
@@ -64,3 +70,25 @@
 
     echo $str;
 ?>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" 
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" 
+        crossorigin="anonymous"></script>
+
+<script>
+    function selectSeat(x, y) {
+        console.log("selectSeat=====");
+        $target = $("div[data-x=" + x +"][data-y=" + y + "]");
+        $target.removeClass("empty");
+        $target.addClass("occupy");
+        console.log($target);
+    }
+
+    function cancelSeat(x, y) {
+        console.log("cancelSeat=====");
+        $target = $("div[data-x=" + x +"][data-y=" + y + "]");
+        $target.removeClass("occupy");
+        $target.addClass("empty");
+        console.log($target);
+    }
+</script>
