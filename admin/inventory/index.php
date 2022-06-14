@@ -1,4 +1,5 @@
 <?php require_once('../header.php') ?>
+<link rel="stylesheet" href="../custom_lib/css/modal.css">
 <link rel="stylesheet" href="../custom_lib/css/inventory.css">
 <section id="main-content">
       <section class="wrapper">
@@ -39,7 +40,7 @@
       </div>
       </section>
 </section>
-
+<script src="../custom_lib/js/common.js"></script>
 <script src="../custom_lib/js/inventory.js"></script>
 
 <?php include_once('../footer.php') ?>
