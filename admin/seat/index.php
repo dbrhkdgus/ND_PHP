@@ -2,8 +2,15 @@
 
 <section id="main-content">
     <section class="wrapper">
-    
-    </section>        
+        <h3>좌석좌석</h3>
+        <div>
+            <div>좌석 배치</div>
+            <div>
+                <div>이용 정보(회원 정보, 이용 시간, 이용 내역, 요금)</div>
+                <div>좌석 정보(기기 관리)</div>
+            </div>
+        </div>
+    </section>    
 </section>
 
 <script src="https://code.jquery.com/jquery-3.6.0.js" 

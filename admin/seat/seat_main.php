@@ -5,14 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./admin/custom_lib/css/seat.css">
-    <title>Seat</title>
+    <title>seat_user</title>
 </head>
 <body>
-    <div class='seats-box-body'>
-        <div class='seats-box-content'>
-            <?php include_once('getSeat.php') ?>
+    <form action="./process.php?mode=selectSeat" method="post">
+        <div class="seats-box-content">
+            <div class="seats-box-body">
+                <?php include_once('getSeat.php') ?>
+            </div><!-- /.seats-box-body -->
+            <div class="seats-box-foot">
+                <input type="submit" value="좌석 선택"> + 회원번호
+            </div><!-- /.seats-box-foot -->
         </div><!-- /.seats-box-content -->
-    </div><!-- /.seats-box-body -->
+    </form>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.js" 
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" 
