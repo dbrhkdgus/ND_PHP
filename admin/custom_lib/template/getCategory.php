@@ -16,4 +16,11 @@
         
         return $tag;
     }
+
+    function getCteListTag(){
+        $sql = 'select * from item_category order by id';
+        $result = connect($sql);
+
+        
+    }
 ?>

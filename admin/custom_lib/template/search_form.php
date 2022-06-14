@@ -1,27 +1,4 @@
-<style>
-    .inventory_search_from{
-        margin-top: 2%;
-    }
-    .inner-form{
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-        justify-content: flex-end;
-    }
-    .inner-form > .select-wrap{
-        width: 10%;
-    }
-    .select-wrap select, .input-wrap input{
-        width: 95%;
-    }
-
-    .inner-form > .input-wrap{
-        width: 20%;
-    }
-    
-</style>
-
-
+<link rel="stylesheet" href="../custom_lib/css/search_form.css">
 <div class="inventory_search_from">
     <form onsubmit="return false" method="get" >
         <div class="inner-form">
