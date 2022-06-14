@@ -4,7 +4,7 @@
         $result = connect($sql);
         $tag = '';
         while($item = mysqli_fetch_array($result)){
-            $percent = $item["amount"]/50*100;
+            $percent = $item["amount"]/$item["max_amt"]*100;
             $tag = $tag.'<tr>
             <td class="py-1">
               <img class="summary_img" src="'.$item["img_url"].'" alt="image" /> </td>

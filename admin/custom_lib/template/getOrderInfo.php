@@ -1,5 +1,5 @@
 <?php
-    require_once('../../DataBase/connection.php');
+    require_once($_SERVER["DOCUMENT_ROOT"].'\ND_PHP\DataBase\connection.php');
     function getOrderInfo($id = 0){
         $sql = 'select * from item_order_info';
 

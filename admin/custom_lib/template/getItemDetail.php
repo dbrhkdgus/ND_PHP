@@ -1,7 +1,7 @@
 <?php
-    require_once('../../DataBase/connection.php');
-    include('getCategory.php');
-    include('getOrderInfo.php');
+    require_once($_SERVER["DOCUMENT_ROOT"].'\ND_PHP\DataBase\connection.php');
+    include('./getCategory.php');
+    include('./getOrderInfo.php');
 
     $tag = '<form name="inventory_detail" onSubmit="return false"><input type="hidden" name="isChanged" value="false">';
     $id = $_GET["id"];
@@ -94,7 +94,7 @@
             <tbody>
               <tr>
                 <th>발주처 명</th>
-                <td> '.$item["category_name"].' </td>
+                <td> '.$item["order_name"].' </td>
               </tr>
               <tr>
                 <th> 발주처 연락처 </th>

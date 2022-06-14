@@ -1,5 +1,5 @@
 <?php
-    require_once('../../DataBase/connection.php');
+    require_once($_SERVER["DOCUMENT_ROOT"].'\ND_PHP\DataBase\connection.php');
 
     $id = $_POST["id"];
     $mode = $_POST["mode"];

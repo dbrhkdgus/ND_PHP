@@ -77,7 +77,7 @@
 <section id="main-content">
       <section class="wrapper">
       
-        <?php include('search_form.php') ?>
+      <?php include('../custom_lib/template/search_form.php') ?>
 
       <div class="col-lg-12 grid-margin stretch-card">
         <div class="card" style="box-shadow: 0 0 0;">
@@ -97,7 +97,7 @@
                 </tr>
               </thead>
               <tbody class="result">
-                  <?php include('getInventoryList.php'); allItems();?>
+                  <?php include('./getInventoryList.php'); allItems();?>
 
               </tbody>
             </table>
@@ -132,7 +132,7 @@
     const jsonStr = JSON.stringify(obj);
 
     $.ajax({
-      url : "search.php",
+      url : "<?= PATH ?>inventory/search.php",
       method : 'get',
       data : {
         data : jsonStr
@@ -146,7 +146,7 @@
   }
 function itemDetail(id){
   $.ajax({
-    url : 'getItemDetail.php',
+    url : '<?= PATH ?>custom_lib/template/getItemDetail.php',
     method : 'get',
     data : {
       id : id
@@ -178,7 +178,7 @@ function inventory_process(mode, id){
      };
      const jsonStr = JSON.stringify(obj);
      $.ajax({
-       url : 'inventory_process.php',
+       url : '<?= PATH ?>custom_lib/template/inventory_process.php',
        method : 'post',
        data : {
          jsonStr : jsonStr,
