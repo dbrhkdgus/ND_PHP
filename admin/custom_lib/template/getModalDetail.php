@@ -131,16 +131,16 @@
                 <form name="order_info_form" onSubmit="return false">
                     <input type="hidden" name="isChanged" value="false">
                     <label for="">
-                        <p>발주처 : </p><input type="text" name="name" value="'.$order["name"].'" onChange="is_change();">
+                        <p>발주처 : </p><input type="text" name="name" value="'.$order["name"].'" onChange="is_change(\'update\');">
                     </label>
                     <label for="">
-                        <p>Email : </p><input type="email" name="email" value="'.$order["email"].'" onChange="is_change();">
+                        <p>Email : </p><input type="email" name="email" value="'.$order["email"].'" onChange="is_change(\'update\');">
                     </label>
                     <label for="">
-                        <p>전화번호 : </p><input class="tel_input valid" type="text" name="tel1" value="'.$tel_arr[0].'" onChange="is_change();"> - <input class="tel_input valid" type="text" name="tel2" value="'.$tel_arr[1].'" onChange="is_change();"> - <input class="tel_input valid" type="text" name="tel3" value="'.$tel_arr[2].'" onChange="is_change();">
+                        <p>전화번호 : </p><input class="tel_input valid" type="text" name="tel1" value="'.$tel_arr[0].'" onChange="is_change(\'update\');"> - <input class="tel_input valid" type="text" name="tel2" value="'.$tel_arr[1].'" onChange="is_change(\'update\');"> - <input class="tel_input valid" type="text" name="tel3" value="'.$tel_arr[2].'" onChange="is_change(\'update\');">
                     </label>
                     <label for="">
-                        <p>메모 : </p> <textarea name="memo" cols="30" rows="10" onChange="is_change();">'.$order["memo"].'</textarea>
+                        <p>메모 : </p> <textarea name="memo" cols="30" rows="10" onChange="is_change(\'update\');">'.$order["memo"].'</textarea>
                     </label>
                     
                 </form>

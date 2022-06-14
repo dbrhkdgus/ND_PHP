@@ -9,6 +9,28 @@
         $sql = 'update item_order_info set name = \''.$info["name"].'\', email = \''.$info["email"].'\', tel = \''.$tel.'\', memo = \''.$info["memo"].'\' where id = '.$_GET["id"];
 
         $result = connect($sql);
+
+        echo '발주처 정보가 수정되었습니다.';
+
+
+
+    }else if($mode === 'insert'){
+        $jsonStr = $_GET["jsonStr"];
+        $info = json_decode($jsonStr, true);
+        $tel = $info["tel1"].'-'.$info["tel2"].'-'.$info["tel3"];
+
+        $sql = 'insert into item_order_info (name, email, tel, memo) values(\''.$info["name"].'\', \''.$info["email"].'\', \''.$tel.'\', \''.$info["memo"].'\')';
+        $result = connect($sql);
+
+        echo '발주처가 새로 등록되었습니다.';
+
+
+
+    }else if($mode === 'delete'){
+        $sql = 'delete from item_order_info where id = '.$_GET["id"];
+        $result = connect($sql);
+        
+        echo '삭제되었습니다.';
     }
 
 ?>

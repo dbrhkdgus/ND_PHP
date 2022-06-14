@@ -36,10 +36,10 @@ function order_info_process(mode, id){
             data : {
                 id : id,
                 jsonStr : jsonStr,
-                mode : 'update'
+                mode : mode
             },
             success(res){
-                alert("발주처 정보가 수정되었습니다.");
+                alert(res);
                 $('#order_info_detail_modal').hide();
                 location.reload();
             },
@@ -51,36 +51,65 @@ function order_info_process(mode, id){
     }
 }
 
-function moveToEmail(id){
-    console.log('email',id);
+function orderDelete(id){
+    if(confirm('발주처 정보를 삭제하시겠습니까?')){
+        $.ajax({
+            url : PATH + 'custom_lib/template/order_info_process.php',
+            method : 'get',
+            data : {
+                id : id,
+                mode : 'delete'
+            },
+            success(res){
+                alert(res);
+                $('#order_info_detail_modal').hide();
+                location.reload();
+            },
+            error : console.log
+
+        })
+    }else{
+        return false;
+    }
 }
 
 function addOrderInfo(){
-    console.log('발주처 추가');
+    var tag = `    <hr>
+    <div class="order_info_form_box">
+        <form name="order_info_form" onSubmit="return false">
+            <input type="hidden" name="isChanged" value="false">
+            <label for="">
+                <p>발주처 : </p><input type="text" name="name" value="" onChange="is_change(\'insert\');">
+            </label>
+            <label for="">
+                <p>Email : </p><input type="email" name="email" value="" onChange="is_change(\'insert\');">
+            </label>
+            <label for="">
+                <p>전화번호 : </p><input class="tel_input valid" type="text" name="tel1" value="" onChange="is_change(\'insert\');"> - <input class="tel_input valid" type="text" name="tel2" value="" onChange="is_change(\'insert\');"> - <input class="tel_input valid" type="text" name="tel3" value="" onChange="is_change(\'insert\');">
+            </label>
+            <label for="">
+                <p>메모 : </p> <textarea name="memo" cols="30" rows="10" onChange="is_change(\'insert\');"></textarea>
+            </label>
+        </form>
+    </div>
+    <hr>
+    <div class="order_btn_box">
+        <button id="btn_update_order_info" onClick="order_info_process('insert', 0);">닫기</button>
+    </div>`;
+    $(".modal_body")
+        .html('발주처 관리<div class="close_modal" onClick="close_modal(this);">x</div>')
+        .append(tag);
+    $("#order_info_detail_modal").show();
     
-    // <hr>
-    //         <div class="order_info_form_box">
-    //             <form name="order_info_form" onSubmit="return false">
-    //                 <input type="hidden" name="isChanged" value="false">
-    //                 <label for="">
-    //                     <p>발주처 : </p><input type="text" name="name" value="농심" onChange="is_change();">
-    //                 </label>
-    //                 <label for="">
-    //                     <p>Email : </p><input type="email" name="email" value="ns@mail.com" onChange="is_change();">
-    //                 </label>
-    //                 <label for="">
-    //                     <p>전화번호 : </p><input class="tel_input valid" type="text" name="tel1" value="000" onChange="is_change();"> - <input class="tel_input valid" type="text" name="tel2" value="0000" onChange="is_change();"> - <input class="tel_input valid" type="text" name="tel3" value="0000" onChange="is_change();">
-    //                 </label>
-    //             </form>
-    //         </div>
-    //         <hr>
-    //         <div class="order_btn_box">
-    //             <button id="btn_update_order_info" onClick="order_info_process('update');">닫기</button>
-    //         </div>
+
     
 }
 
-function is_change(){
-    $("#btn_update_order_info").text('수정');
+function is_change(mode){
+    if(mode === 'update'){
+        $("#btn_update_order_info").text('수정');
+    }else{
+        $("#btn_update_order_info").text('등록');
+    }
     $("input[name=isChanged").val(true);
 }
