@@ -34,4 +34,19 @@
         $tag = $tag.'<tr><td id="last_td" colspan="5"><button onClick="addOrderInfo();">발주처 추가</button></td></tr>';
         return $tag;
     }
+
+    function getOrderSelectTag(){
+        $sql = 'select * from item_order_info order by id';
+        $result = connect($sql);
+        $tag = '<select name="order_info_id" onChange="getOrderInfo();">
+                    <option value="0">발주처를 선택하세요.</option>';
+
+        while($order = mysqli_fetch_array($result)){
+            $tag = $tag.'<option value="'.$order["id"].'">'.$order["name"].'</option>';
+        }
+
+        $tag = $tag.'</select>';
+
+        return $tag;
+    }
 ?>
