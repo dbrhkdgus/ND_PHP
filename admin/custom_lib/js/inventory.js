@@ -37,7 +37,10 @@ function itemDetail(id){
       mode : 'item_detail'
     },
     success(res){
-      $(".modal_body").html('제품 상세 정보<div class="close_modal" onClick="close_modal(this);">x</div>').append(res);
+      $(".modal_body")
+      .html('제품 상세 정보<div class="close_modal" onClick="close_modal(this);">x</div>')
+      .append(res);
+      getOrderInfo();
       $('.modal').show();
     },
     error : console.log
@@ -52,7 +55,9 @@ function addInventory(){
       mode : 'item_default'
     },
     success(res){
-      $(".modal_body").html('제품 상세 정보<div class="close_modal" onClick="close_modal(this);">x</div>').append(res);
+      $(".modal_body")
+        .html('제품 상세 정보<div class="close_modal" onClick="close_modal(this);">x</div>')
+        .append(res);
       $('.modal').show();
     },
     error : console.log
@@ -101,7 +106,6 @@ function inventory_process(mode, id){
 function getOrderInfo(){
   var id = $("select[name=order_info_id] :selected").val();
   if(id != 0){
-
     $.ajax({
       url : PATH + 'custom_lib/template/order_info_process.php',
       method : 'get',
@@ -115,6 +119,7 @@ function getOrderInfo(){
         $("#order_info_tel").text(tel);
         $("#order_info_email").text(email);
         $("textarea").text(memo);
+        is_changed();
       },
       error : console.log
     })

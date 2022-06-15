@@ -76,7 +76,7 @@
             <tbody>
               <tr>
                 <th>발주처 명</th>
-                <td>'.getOrderSelectTag().'</td>
+                <td>'.getOrderSelectTag(0).'</td>
               </tr>
               <tr>
                 <th> 발주처 연락처 </th>
@@ -195,19 +195,19 @@
               <tbody>
                 <tr>
                   <th>발주처 명</th>
-                  <td> '.$item["order_name"].' </td>
+                  <td>'.getOrderSelectTag($item["order_id"]).'</td>
                 </tr>
                 <tr>
                   <th> 발주처 연락처 </th>
-                  <td> '.$order["tel"].' </td>
+                  <td><span id="order_info_tel"></span></td>
                 </tr>
                 <tr>
                   <th> 발주처 이메일 </th>
-                  <td> '.$order["email"].' </td>
+                  <td><span id="order_info_email"></span></td>
                 </tr>
                 <tr>
                   <th> 메모 </th>
-                  <td><textarea name="" id="" cols="25" rows="5" style="resize:none;" readonly>'.$order["memo"].'</textarea></td>
+                  <td><textarea name="" id="" cols="25" rows="5" style="resize:none;" readonly></textarea></td>
                 </tr>
               </tbody>
             </table>

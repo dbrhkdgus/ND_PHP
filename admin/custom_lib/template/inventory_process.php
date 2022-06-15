@@ -24,6 +24,9 @@
         $sql = 'update rel_inventory_category set category_id = '.str_replace('selected','',$item["cte_id"]).' where inventroy_id = '.$id;
         $result = connect($sql);
 
+        $sql = 'update rel_inventory_order set order_info_id = '.$item["order_info_id"].' where inventory_id = '.$id;
+        $result = connect($sql);
+        
         echo '제품 정보가 수정되었습니다.';
     }else if($mode === 'insert'){
         if(!isset($item["is_pop"])){
