@@ -18,20 +18,16 @@
         $result = mysqli_query($conn,$sql);
         $passChack = mysqli_fetch_array($result);
         if($passChack != $_POST['password']){
-            echo "<script>alert('비밀번호가 맞지 않습니다.')</script>";
+            echo "1";
         }
     }else{
         session_start();
         $_SESSION['id'] = $_POST['id'];
         $_SESSION['password'] = $_POST['password'];
         $_SESSION['user'] = $user;
-        echo "<script>alert('로그인이 완료되었습니다.')</script>";
-?>
-        <script>
-            window.opener.location = "test.php";
-            window.close();
-        </script>
-<?php
+        $json = json_encode(array('userNo' => $user['userNo'], 'id' => $user['id'], 'password' => $user['password'],
+                                  'phone' => $user['phone'], 'email' => $user['email'], 'role' => $user['role']));
+        echo($json);
     }
 ?>
 

@@ -19,12 +19,22 @@
             $("#password").focus();
             return;
         }
-        var loginForm = document.form_login;
-        var url = "admin/user/login.php"
-        window.open("", "form_login", "toolbar=no, width=480, height=120");
-        loginForm.action = url;
-        loginForm.method = "POST";
-        loginForm.target = "form_login";
-        var result = loginForm.submit();
+        $.ajax({
+            url : "admin/user/login.php",
+            type : "POST",
+            data : $("form[name='form_login']").serialize(),
+        }).done(function(data){			
+            if(data == 1){
+                alert("비밀번호가 맞지 않습니다.");
+            }else{
+                data = JSON.parse(data);
+                if(data.role == "0"){
+                    alert("여기는 관리자");
+                }else if(data.role == "1" || data.role == "2"){
+                    alert("여기는 회원과 비회원");
+                }
+            }
+            
+		});
     }
 </script>
