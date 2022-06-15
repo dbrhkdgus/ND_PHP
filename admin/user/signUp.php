@@ -1,3 +1,4 @@
+<?php include_once('fncSignUp.php') ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,16 +15,17 @@
 			<div class="input-form col-md-12 mx-auto">
 				<h4 class="mb-3" style="font-weight: bold; text-align: center;">회원가입</h4>
 				<form name="form_userSubmit" action="userSubmit.php" method="POST">
+					<input type="hidden" name="checked_id" value=""/>
 					<div class="mb-3">
 						<label for="id">아이디</label> 
 						<div class="row col">
-							<input type="text" class="form-control col-6" id="id" name="id" placeholder="영문과 숫자 4~15자로 입력하세요." value="" required style="width:315px">&nbsp;&nbsp;
+							<input type="text" class="form-control col-6" id="id" name="id" placeholder="아이디를 입력해주세요." value="" required style="width:315px">&nbsp;&nbsp;
 							<button type="button" id="btnCheckId" class="btn btn-outline-secondary" onclick="onclickCheckId()">중복확인</button>					
 						</div>
 					</div>
 					<div class="mb-3">
 						<label for="password">비밀번호</label> 
-						<input type="password" class="form-control" id="password" name="password" placeholder="영문소문자와 숫자 포함 8~15자로 입력하세요." required style="width:315px">
+						<input type="password" class="form-control" id="password" name="password" placeholder="비밀번호를 입력해주세요" required style="width:315px">
 					</div>
 					<div class="mb-3">
 						<label for="passwordCheck">비밀번호</label> 
@@ -70,5 +72,4 @@
 		</div>
 	</div>    
 </body>
-	<?php include_once('fncSignUp.php') ?>
 </html>
