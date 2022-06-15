@@ -8,7 +8,7 @@ function updateCte(id){
         console.log(name);
         $.ajax({
             url : PATH + 'custom_lib/template/category_process.php',
-            method : 'get',
+            method : 'post',
             data : {
                 id : id,
                 name : name,
@@ -26,17 +26,42 @@ function updateCte(id){
 
 }
 
-function resit_cte(){
+function deleteCte(id, cnt){
+    if(confirm("카테고리 내부 아이템이 모두 삭제됩니다.\n내부 아이템 카테고리 이동을 권고드립니다. \n삭제하시겠습니까?")){
+        if(cnt > 0){
+            if(!confirm(cnt+'개의 아이템이 존재합니다. \n삭제를 계속하시겠습니까?')){
+                return false;
+            }
+        }
+            $.ajax({
+                url : PATH + 'custom_lib/template/category_process.php',
+                method : 'post',
+                data : {
+                    id : id,
+                    mode : 'delete'
+                },
+                success(res){
+                    console.log(res);
+                    alert('삭제되었습니다.');
+                    location.reload();
+                },
+                error : console.log
+            });
+    }
+}
+    
+    function resit_cte(){
     var name = $('#new_name').val();
     $.ajax({
         url : PATH + 'custom_lib/template/category_process.php',
-        method : 'get',
+        method : 'post',
         data : {
             name : name,
             mode : 'insert'
         },
         success(res){
-            console.log(res)
+            alert('카테고리가 추가되었습니다.');
+            location.reload();
         },
         error : console.log
         
