@@ -3,6 +3,7 @@
 
     $mode = $_GET["mode"];
     if($mode === 'update'){
+        // 아래 3줄 (7~9) 메소드화 했으면 좋겠음.
         $jsonStr = $_GET["jsonStr"];
         $info = json_decode($jsonStr, true);
         $tel = $info["tel1"].'-'.$info["tel2"].'-'.$info["tel3"];
@@ -29,7 +30,7 @@
     }else if($mode === 'delete'){
         $sql = 'delete from item_order_info where id = '.$_GET["id"];
         $result = connect($sql);
-        
+
         echo '삭제되었습니다.';
     }
 
