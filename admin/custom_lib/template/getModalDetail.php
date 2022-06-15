@@ -24,8 +24,9 @@
       <div class="basic_info_box">
         <div class="item_img_box">
           <input type="hidden" name="img_url" value="">
-          <img class="summary_img" src="../img/default_picture.png" alt="">
-          <button onClick="img_change()">사진 수정</button>
+          <img id="modal_img" class="summary_img" src="../img/default_picture.png" alt="">
+          <input type="file" name="img" accept="image/*" style="display:none;" onChange="img_change(event);">
+          <button onClick="btn_img_change()">사진 수정</button>
         </div>
         <div class="item_info_table">
           <table style="width: 120%;">
@@ -127,8 +128,9 @@
         <div class="basic_info_box">
           <div class="item_img_box">
             <input type="hidden" name="img_url" value="'.$item["img_url"].'">
-            <img class="summary_img" src="'.$item["img_url"].'" alt="">
-            <button onClick="img_change()">사진 수정</button>
+            <img id="modal_img" class="summary_img" src="'.$item["img_url"].'" alt="">
+            <input type="file" name="img" accept="image/*" style="display:none;" onChange="img_change(event);">
+            <button onClick="btn_img_change()">사진 수정</button>
           </div>
           <div class="item_info_table">
             <table style="width: 120%;">
@@ -212,7 +214,8 @@
           </div>
           <hr style="margin-bottom: 10px;">
           <div class="submit_button">
-            <button id="btn_item_detail_submit" onClick="inventory_process(\'update\', '.$item["id"].')">닫기</button>
+            <button id="btn_item_delete" onClick="inventory_process(\'delete\', '.$item["id"].');">삭제</button>
+            <button id="btn_item_detail_submit" onClick="inventory_process(\'update\', '.$item["id"].');">닫기</button>
           </div>';
         }
       echo $tag;

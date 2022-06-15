@@ -18,7 +18,7 @@
     }
 
     function getCteListTag(){
-        $sql = 'SELECT b.*, COUNT(a.category_id) as count FROM v_inventory_info a RIGHT JOIN  item_category b ON a.category_id = b.id GROUP BY a.category_id order by b.id';
+        $sql = 'SELECT a.*, COUNT(b.category_id) as count FROM item_category a left JOIN  v_inventory_info b ON b.category_id = a.id GROUP BY a.id ORDER BY a.id';
         $result = connect($sql);
 
         $tag = '';
@@ -29,7 +29,7 @@
             <td> <input type="text" id="cte_name-'.$cte["id"].'" value="'.$cte["name"].'" onChange="is_changed('.$cte["id"].');"> </td>
             <td> '.$cte["count"].'개 </td>
             <td><button onClick = "updateCte('.$cte["id"].')">수정하기</button> </td>
-            <td><button onClick = "deleteCte('.$cte["id"].')">삭제하기</button> </td>
+            <td><button onClick = "deleteCte('.$cte["id"].', '.$cte["count"].')">삭제하기</button> </td>
             </tr>';
 
         }
