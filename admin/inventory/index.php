@@ -14,7 +14,7 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th style="width : 20%;"> 상품 이미지 </th>
+                  <th style="width : 15%;"> 상품 이미지 </th>
                   <th> 상품명 </th>
                   <th> 가격 </th>
                   <th> 카테고리 </th>

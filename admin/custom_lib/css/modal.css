@@ -31,3 +31,6 @@
     float : right;
     cursor : pointer;
 }
+
+#last_td{text-align: center;}
+#last_td > button {width:90%; margin-top: 5%;}

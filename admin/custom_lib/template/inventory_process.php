@@ -23,6 +23,10 @@
 
         $sql = 'update rel_inventory_category set category_id = '.str_replace('selected','',$item["cte_id"]).' where inventroy_id = '.$id;
         $result = connect($sql);
+
+        echo '제품 정보가 수정되었습니다.';
+    }else if($mode === 'insert'){
+        echo 'test';
     };
 
 ?>
