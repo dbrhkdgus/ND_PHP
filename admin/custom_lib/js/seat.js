@@ -28,3 +28,12 @@ function cancelSeat(x, y) {
     $target.removeAttr("onclick");
     $target.attr("onclick", "selectSeat(" + x + "," + y + ")");
 }
+
+// 관리자 좌석 선택
+function checkSeat(x, y) {
+    $target = $("div[data-x=" + x +"][data-y=" + y + "]");
+    console.log("(" + y + ", " + x + ") 좌석을 선택하셨습니다.");
+
+    // 해당 좌석에 대한 정보 띄우기 모달 또는 ajax
+    
+}
