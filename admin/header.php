@@ -292,7 +292,6 @@
             <ul class="sub">
               <li><a href="<?= PATH ?>/inventory">재고 목록</a></li>
               <li><a href="<?= PATH ?>/category">카테고리 관리</a></li>
-              <li><a href="<?= PATH ?>/item">Contact Form</a></li>
               <li><a href="<?= PATH ?>/order">발주처 관리</a></li>
             </ul>
           </li>
@@ -307,13 +306,19 @@
               <li><a href="advanced_table.html">Advanced Table</a></li>
             </ul>
           </li>
-          <li>
-            <a href="inbox.html">
+          <li class="sub-menu">
+            <a href="javascript:">
               <i class="fa fa-envelope"></i>
               <span>E-Mail </span>
               <span class="label label-theme pull-right mail-info">2</span>
-              </a>
+            </a>
+            <ul class="sub">
+              <li><a href="<?= PATH ?>/email">이메일 발송 내역</a></li>
+              <li><a href="responsive_table.html">Responsive Table</a></li>
+              <li><a href="advanced_table.html">Advanced Table</a></li>
+            </ul>
           </li>
+
           <li class="sub-menu">
             <a href="javascript:;">
               <i class=" fa fa-bar-chart-o"></i>
