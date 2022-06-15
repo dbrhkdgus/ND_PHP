@@ -1,8 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +13,7 @@
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
 				<h4 class="mb-3" style="font-weight: bold; text-align: center;">회원가입</h4>
-				<form:form name="userJoinFrm" method="POST" action="${pageContextrequest.contextPath}/user/user/userEnroll.do" >
+				<form name="form_userSubmit" action="userSubmit.php" method="POST">
 					<div class="mb-3">
 						<label for="id">아이디</label> 
 						<div class="row col">
@@ -63,35 +63,12 @@
 					<hr class="mb-4">
 					<div class="text-center">
 						<button type="button" onclick="cancel()" class="btn btn-secondary btn-lg">취소</button>&nbsp;&nbsp;&nbsp;&nbsp;
-						<button type="button" onclick="userEnrollSubmit()" class="btn btn-primary btn-lg">가입</button>
+						<button type="button" onclick="signUpUser()" class="btn btn-primary btn-lg" value="가입">가입</button>
 					</div>
-				</form:form>
+				</form>
 			</div>
 		</div>
 	</div>    
 </body>
-<script>
-        var id = $("#id").val();
-		
-		// id 값을 입력하지 않았을 때
-		if(id == ""){
-			alert("id를 정확히 입력해주세요");
-			// 해당 위치로 입력 커서 이동
-			$("#id").focus();
-			return false;
-		}
-		
-		// 아이디 개수 유효성 검사
-		if(!/^[a-zA-Z0-9]{4,12}$/.test(id)){
-			alert("id를 정확히 입력해주세요");
-			$("#id").focus();
-			return false;
-		}
-		
-		const data = {
-				id : id
-		};
-</script>
-
-
+	<?php include_once('fncSignUp.php') ?>
 </html>
