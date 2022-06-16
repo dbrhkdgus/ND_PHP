@@ -314,7 +314,7 @@
             </a>
             <ul class="sub">
               <li><a href="<?= PATH ?>/email">이메일 발송 내역</a></li>
-              <li><a href="responsive_table.html">Responsive Table</a></li>
+              <li><a href="<?= PATH ?>/email/setting">이메일 설정</a></li>
               <li><a href="advanced_table.html">Advanced Table</a></li>
             </ul>
           </li>
