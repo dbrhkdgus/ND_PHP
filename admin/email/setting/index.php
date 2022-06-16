@@ -16,10 +16,10 @@
                             </label>
                             <div class="form_handling_box">
                             <label>
-                                <p>자동 전송 양식</p><input type="checkbox" name="auto" value="auto" onChange="auto_check_control(event);" checked="checked">
+                                <p>자동 전송 양식</p><input type="checkbox" name="auto" value="auto" checked>
                             </label>
                             <label >
-                                <p style="margin-left : 1%;">일반 메일 전송</p><input type="checkbox" name="auto" value="manual" onChange="auto_check_control(event);">
+                                <p style="margin-left : 1%;">일반 메일 전송</p><input type="checkbox" name="auto" value="manual">
                             </label>
                         </div>
                         <label id="receiver_label"  for="">
@@ -37,23 +37,29 @@
     </section>
 </section>
 <script src="../../custom_lib/js/common.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
-    function auto_check_control(e){
-        $(e.target).parent().siblings().children("input").attr('checked', false);
+    $(document).ready(function(){
+        $("input[name=auto]").click(function(){
+            if($(this).prop('checked')){
+                $("input[name=auto]").prop('checked', false);
+                $(this).prop('checked',true);
+            }
+            if($(this).val() === 'auto'){
+                $('input[name=title]').val('<?= getEmailInfo()["title"] ?>');
+                $('textarea').text(`<?php echo getEmailForm(); ?>`);
+                $('#btn_email_submit').text('저장');
+                $("#receiver_label").hide();
+            }else if($(this).val() === 'manual'){
+                $('input[name=title]').val('');
+                $('textarea').text('');
+                $('#btn_email_submit').text('발송');
+                $("input[name=receiver").val('');
+                $("#receiver_label").show();
+            }
+        }) 
+    });
 
-        if($("input[name=auto]:checked").val() == 'auto'){
-            $('input[name=title]').val('<?= getEmailInfo()["title"] ?>');
-            $('textarea').text(`<?php echo getEmailForm(); ?>`);
-            $('#btn_email_submit').text('저장');
-            $("#receiver_label").hide();
-        }else{
-            $('input[name=title]').val('');
-            $('textarea').text('');
-            $('#btn_email_submit').text('발송');
-            $("input[name=receiver").val('');
-            $("#receiver_label").show();
-        }
-    }
 
     function mail_process(){
       var form = $(document['email_form']);
@@ -72,10 +78,12 @@
             },
             success(res){
                 var flag = res.slice(-1);
-                if(flag){
+                if(flag === 1){
                     alert('메일이 발송되었습니다.');
-                }else{
+                }else if(flag == 2){
                     alert('메일 발송에 실패하였습니다.');
+                }else {
+                    alert(res);
                 }
             },
             error : console.log
