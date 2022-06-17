@@ -42,7 +42,7 @@ while($item = mysqli_fetch_array($query_result)){
 $file = '';
 
 
-// 이후 음식제품 주문시, amount값이 maint_amt값보다 작아졌을 때, 아래 주석을 해제하고 이 php를 불러와 실행시키면 된다.
+// 이후 음식제품 주문시, amount값이 maint_amt값보다 같거나 작아졌을 때, 아래 주석을 해제하고 이 php를 불러와 실행시키면 된다.
 //$result = sendMail($mailType, $address , $password, $receiver, $title, $content, $file);
 
 ?>

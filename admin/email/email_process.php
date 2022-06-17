@@ -132,11 +132,19 @@
             // 메일 전송
             $mail -> send();
             
+            // 이메일 발송 내역 저장.
+            insertEmailHistory($receiver, $title, $content);
+
             return "1"; // 전송성공인 경우, 마지막에 1추가
             
             } catch (Exception $e) {
                 //$arr = array("msg" => "메일 발송에 실패하였습니다.", "error_info" => ($mail -> ErrorInfo));
                 return "0"; // 전송 실패의 경우, 마지막에 0추가
             }
+    }
+
+    function insertEmailHistory($receiver, $title, $content){
+        $sql ="insert into email_history set receiver = '".$receiver."', content = '".$content."', title = '".$title."'";
+        $result = connect($sql);
     }
 ?>

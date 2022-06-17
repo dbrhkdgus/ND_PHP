@@ -6,7 +6,7 @@
     <section class="wrapper">
     <?php include('../../custom_lib/template/search_form.php') ?>
         <div class="col-lg-12 grid-margin stretch-card">
-            <div class="card" style="box-shadow: 0 0 0;">
+            <div class="card" style="box-shadow: 0 0 0; height : 100%;">
                 <div class="card-body">
                     <h4 class="card-title" onClick="location.reload()" style="cursor : pointer;"> 이메일 양식 설정 </h4>
                     <form name="email_form" onsubmit="return false">
@@ -68,12 +68,12 @@ $(document).ready(function(){
         }
         if($(this).val() === 'auto'){ // 자동 메일 발송을 선택한 경우, 해당 양식을 출력
             $('input[name=title]').val('<?= getEmailInfo()["title"] ?>');
-            $('textarea').text(`<?php echo getEmailForm(); ?>`);
+            $('textarea').val(`<?php echo getEmailForm(); ?>`);
             $('#btn_email_submit').text('저장');
             $("#receiver_label").hide();
         }else if($(this).val() === 'manual'){ // 수동 메일 보내기를 선택한 경우, 빈 값으로 남김.
             $('input[name=title]').val('');
-            $('textarea').text('');
+            $('textarea').val('');
             $('#btn_email_submit').text('발송');
             $("input[name=receiver").val('');
             $("#receiver_label").show();
@@ -101,11 +101,16 @@ function mail_process(){
           jsonStr : jsonStr
       },
       success(res){ // response되는 값이 엄청 긺. PHPMailer가 자동으로 처리 결과 전체를 리턴.. 
-          var flag = res.slice(-1); // 다만 마지막 한글자를 추가해서 그 값만 가져와 flag로 씀.
-          
-          if(flag === 1){
-              alert('메일이 발송되었습니다.');
-          }else if(flag == 2){
+        console.log(res.slice(-1));
+        var flag = res.slice(-1); // 다만 마지막 한글자를 추가해서 그 값만 가져와 flag로 씀.
+          if(flag === "1"){
+            alert('메일이 발송되었습니다.');
+            $('input[name=title]').val('');
+            $('textarea').val('');
+            $('#btn_email_submit').text('발송');
+            $("input[name=receiver").val('');
+            $("#receiver_label").show();
+          }else if(flag == "2"){
               alert('메일 발송에 실패하였습니다.');
           }else { // 메일을 보내지 않은 경우. = 양식 저장의 경우.
               alert(res);
