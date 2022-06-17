@@ -33,7 +33,7 @@
       </div>
       <!-- 모달창 -->
       <div class="modal" id="item_detail_modal">
-        <div class="modal_body">제품 상세 정보
+        <div class="modal_body" style="height:680px;">제품 상세 정보
           <div class="close_modal" onClick="close_modal(this);">x</div>
             
         </div>

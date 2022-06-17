@@ -35,14 +35,19 @@
         return $tag;
     }
 
-    function getOrderSelectTag(){
+    function getOrderSelectTag($id){
         $sql = 'select * from item_order_info order by id';
         $result = connect($sql);
-        $tag = '<select name="order_info_id" onChange="getOrderInfo();">
+        $tag = '<select name="order_info_id" onChange="getOrderInfo(\'t\');">
                     <option value="0">발주처를 선택하세요.</option>';
 
         while($order = mysqli_fetch_array($result)){
-            $tag = $tag.'<option value="'.$order["id"].'">'.$order["name"].'</option>';
+            $tag = $tag.'<option value="'.$order["id"].'"';
+            if($id === $order["id"]){
+                $tag = $tag.' selected';
+            }
+            
+            $tag = $tag.'>'.$order["name"].'</option>';
         }
 
         $tag = $tag.'</select>';

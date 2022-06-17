@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../custom_lib/css/search_form.css">
+<link rel="stylesheet" href="<?= PATH ?>custom_lib/css/search_form.css">
 <div class="inventory_search_from">
     <form onsubmit="return false" method="get" >
         <div class="inner-form">
