@@ -1,4 +1,5 @@
 <?php
+    // 제품 리스트 template 반환 함수.
     function allItems(){
         $sql = 'select * from v_inventory_info order by category_id';
         $result = connect($sql);

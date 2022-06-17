@@ -228,7 +228,8 @@
       $id = $_GET["id"];
       $order = getOrderInfo($id);
       $tel_arr = explode('-',$order["tel"]); // 디비 테이블에 000-0000-0000의 형식으로 저장되어 있으므로
-                                             // explode하여 배열로 담는다. [000, 0000, 0000]. 각 인덱스로 접근 가능.
+                                             // explode하여 배열로 담는다. 
+                                             // 000-0000-0000 => [000, 0000, 0000]. 각 인덱스로 접근 가능.
 
       $tag = '<hr>
             <div class="order_info_form_box">

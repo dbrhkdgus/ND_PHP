@@ -1,13 +1,9 @@
 <?php
 require_once($_SERVER["DOCUMENT_ROOT"].'\ND_PHP\DataBase\connection.php');
-include('./email_form_config.php');
 include('../email_process.php');
 
-// 사용자 이메일 양식 변수값 치환
+// 사용자가 작성한 이메일 양식 불러옴.
 $form = getEmailForm();
-
-
-
 
 
 // email 계정/비번 초기화.
@@ -16,10 +12,10 @@ $email_info = '';
 while($row = mysqli_fetch_array($query_result)){
     $email_info = array("address" => $row["address"], "password" => $row["password"], "title" => $row["title"]);
 }
-$address = $email_info["address"];
-$mailType = explode('@', $address)[1];
-$password = $email_info["password"];
-$title = $email_info["title"];
+$address = $email_info["address"]; // 이메일 주소
+$mailType = explode('@', $address)[1]; // smtp 처리를 위한 구분. (naver.com인지 gmail.com인지)
+$password = $email_info["password"]; // 이메일 비밀번호
+$title = $email_info["title"]; // 제목
 
 
 
@@ -46,7 +42,7 @@ while($item = mysqli_fetch_array($query_result)){
 $file = '';
 
 
-// 이후 음식 주문시, amount값이 maint_amt값보다 작아졌을 때, 이 php를 불러와 실행시키면 된다.
+// 이후 음식제품 주문시, amount값이 maint_amt값보다 작아졌을 때, 아래 주석을 해제하고 이 php를 불러와 실행시키면 된다.
 //$result = sendMail($mailType, $address , $password, $receiver, $title, $content, $file);
 
 ?>
