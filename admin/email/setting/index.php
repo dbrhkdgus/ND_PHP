@@ -13,6 +13,7 @@
                         <div class="email_setting_box">
                             <label for="">
                                 <p>보내는 주소  </p><input type="email" name="address" value="<?= getEmailInfo()['address']; ?>" >
+                                <button onclick="$('.modal').show();">기본 이메일 주소 변경</button>
                             </label>
                             <div class="form_handling_box">
                             <label>
@@ -34,7 +35,24 @@
                 </div>
             </div>
         </div>
+        <!-- 모달창 -->
     </section>
+        <div class="modal" id="email_info_modal">
+            <div class="modal_body" style="height:200px">email 설정 변경
+                <div class="close_modal" onClick="close_modal(this);">x</div>
+                <hr>
+                    <div class="email_info_box">
+                        <label for=""> 메일주소 : 
+                            <input type="text" name="address" value="<?= getEmailInfo()['address']; ?>">
+                        </label>
+                        <label for=""> 비밀번호 : 
+                            <input type="password"  name="pw" value="">
+                        </label>
+                    </div>
+                    <button onClick="updateEmailInfo();">등록하기</button>        
+            </div>
+        </div>
+    
 </section>
 <script src="../../custom_lib/js/common.js"></script>
 
@@ -96,6 +114,27 @@ function mail_process(){
       error : console.log
   })
 }
-
+// 이메일 정보 수정
+function updateEmailInfo(){
+    // 비밀번호 미입력시 return false
+    if($('input[name=pw]').val() === ''){
+        return false;
+    }
+    $.ajax({
+        url : '<?= PATH ?>/email/email_process.php',
+        method : 'post',
+        data : {
+            address : $('input[name=address]').val(),
+            password : $('input[name=pw]').val(),
+            mode : 'update_info'
+        },
+        success(res){
+            alert(res);
+            $('input[name=pw]').val('');
+            $('.modal').hide();
+        },
+        error : console.log
+    })
+}
 </script>
 <?php include_once('../../footer.php') ?>

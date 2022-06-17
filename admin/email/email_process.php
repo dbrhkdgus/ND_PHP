@@ -7,7 +7,7 @@
     require($_SERVER["DOCUMENT_ROOT"].'\ND_PHP\admin\email\PHPMailer\src\SMTP.php"'); 
     require($_SERVER["DOCUMENT_ROOT"].'\ND_PHP\admin\email\PHPMailer\src\Exception.php'); 
 
-    // javaScript에서 전달한 jsonStr의 존재 여부 파악. (현재의 php로 2개의 요청이 있음. 비동기 && php include)
+    // javaScript에서 전달한 jsonStr의 존재 여부 파악. (현재의 php로 3개의 요청이 있음. 비동기 && php include)
     if(isset($_POST["jsonStr"])){ // 비동기 통신으로 현재 php가 요청이 되었다면,
         $item = json_decode($_POST["jsonStr"], true); // jsonStr를 decode
         $mode = $item["auto"]; // 자동 이메일 양식 저장인지 메일 보내기인지를 구분.
@@ -52,7 +52,11 @@
             
             echo $result;
         };
-        
+    // email info update
+    }else if(isset($_POST["mode"])){
+        $sql = "update email set address = '".$_POST["address"]."', password = '".$_POST["password"]."'";
+        $result = connect($sql);
+        echo '이메일 정보가 변경되었습니다.';
     }
 
     // 파일로 저장된 자동 이메일 양식을 불러오는 함수.
@@ -73,7 +77,7 @@
         $arr = '';
 
         while($row = mysqli_fetch_array($result)){
-            $arr = array("address" => $row["address"], "title" => $row["title"]);
+            $arr = array("address" => $row["address"], "title" => $row["title"], "password" => $row["password"]);
         }
 
         return $arr;
