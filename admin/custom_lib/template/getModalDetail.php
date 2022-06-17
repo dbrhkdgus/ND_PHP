@@ -3,8 +3,10 @@
     include('./getCategory.php');
     include('./getOrderInfo.php');
 
+    // 어떤 모달창 template가 필요한지 구분
     $mode = $_GET["mode"];
-  
+
+    // 제품 등록하기 modal template
     if($mode === 'item_default'){
      
       $tag = '<form name="inventory_detail" onSubmit="return false"><input type="hidden" name="isChanged" value="false">
@@ -32,36 +34,36 @@
           <table style="width: 120%;">
           <tr>
             <th> 이름 </th>
-            <td><input type="text" name="name" value="" onChange="is_changed();"></td>
+            <td><input type="text" name="name" value="" onChange="is_changed(\'insert\');"></td>
           </tr>
           <tr>
             <th> 가격 </th>
-            <td><input type="number" name="price" value="" onChange="is_changed();">원</td>
+            <td><input type="number" name="price" value="" onChange="is_changed(\'insert\');">원</td>
           </tr>
           <tr>
             <th> 현재 재고량 </th>
-            <td><input type="number" name="amount" value="" onChange="is_changed();">개</td>
+            <td><input type="number" name="amount" value="" onChange="is_changed(\'insert\');">개</td>
           </tr>
           <tr>
             <th> 최소 재고량 </th>
-            <td><input type="number" name="maint_amt" value="" onChange="is_changed();">개</td>
+            <td><input type="number" name="maint_amt" value="" onChange="is_changed(\'insert\');">개</td>
           </tr>
           <tr>
             <th> 최대 재고량 </th>
-            <td><input type="number" name="max_amt" value="" onChange="is_changed();">개</td>
+            <td><input type="number" name="max_amt" value="" onChange="is_changed(\'insert\');">개</td>
           </tr>
           <tr>
             <th> 인기/신제품 </th>
             <td>
-              <input style="width: 10%;" type="checkbox" name="is_new" value="1" onChange="is_changed();"> 신제품
-              <input style="width: 10%;" type="checkbox" name="is_pop" value="1" onChange="is_changed();"> 인기
+              <input style="width: 10%;" type="checkbox" name="is_new" value="1" onChange="is_changed(\'insert\');"> 신제품
+              <input style="width: 10%;" type="checkbox" name="is_pop" value="1" onChange="is_changed(\'insert\');"> 인기
             </td>
           </tr>
           <tr>
             <th> 자동 발주 </th>
             <td>
             <p style="font-size : 10px; margin-bottom:0px; margin-top: 2px;">최소 재고 도달 시 자동 발주</p>
-            <input style="width: 10%;" name="auto_email" type="checkbox" value="1" onChange="is_changed();"> 자동발주
+            <input style="width: 10%;" name="auto_email" type="checkbox" value="1" onChange="is_changed(\'insert\');"> 자동발주
             </td>
           </tr>
           </table>
@@ -100,16 +102,17 @@
 
     echo $tag;
 
-
+  // 제품 상세보기 modal template
   }else if($mode === 'item_detail'){
       
       $tag = '<form name="inventory_detail" onSubmit="return false"><input type="hidden" name="isChanged" value="false">';
       $id = $_GET["id"];
       
       $sql = 'select * from v_inventory_info where id ='.$id;
-      
+      // 제품 id를 이용하여 특정 제품 조회
       $result = connect($sql);
-      
+
+      // 각 태그의 value값 채워서 반환
       while($item = mysqli_fetch_array($result)){
         $order = getOrderInfo($item["order_id"]);
         $tag = $tag.'<!-- 카테고리 -->
@@ -220,11 +223,12 @@
         }
       echo $tag;
 
-
+    // 발주처 상세보기 modal template
     }else if($mode === 'order_info'){
       $id = $_GET["id"];
       $order = getOrderInfo($id);
-      $tel_arr = explode('-',$order["tel"]);
+      $tel_arr = explode('-',$order["tel"]); // 디비 테이블에 000-0000-0000의 형식으로 저장되어 있으므로
+                                             // explode하여 배열로 담는다. [000, 0000, 0000]. 각 인덱스로 접근 가능.
 
       $tag = '<hr>
             <div class="order_info_form_box">
