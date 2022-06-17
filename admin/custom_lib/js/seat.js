@@ -34,6 +34,5 @@ function checkSeat(x, y) {
     $target = $("div[data-x=" + x +"][data-y=" + y + "]");
     console.log("(" + y + ", " + x + ") 좌석을 선택하셨습니다.");
 
-    // 해당 좌석에 대한 정보 띄우기 모달 또는 ajax
-    
+    // DB 고민 좀 더 필요....ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ
 }
